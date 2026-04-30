@@ -4,6 +4,8 @@
   h.innerHTML = '<span style="color:var(--ign);font-weight:700;font-size:11px">🏷️ GitTAG</span>'
     +'<span style="color:var(--b);margin:0 6px">│</span>'
     +'<span id="state" style="color:var(--ok);font-size:8px">● BOOT</span>'
+    +'<span style="color:var(--b);margin:0 6px">│</span>'
+    +'<select id="branch-select" class="btn" style="background:var(--s2);color:var(--ig)" onchange="onBranchSwitch(this.value)"><option>master</option></select>'
     +'<span style="flex:1"></span>'
     +'<span class="btn" onclick="fetchTagDB().then(function(){renderTree(document.getElementById(\'west-dock\'))})">↻ Refresh</span>'
     +'<span class="btn primary" onclick="var p=prompt(\'Tag path:\');if(p)createTag(p,prompt(\'UDT type:\'),prompt(\'Value:\'))">+ New Tag</span>'
@@ -40,4 +42,21 @@
 
   setInterval(async function() { await fetchTagDB(); renderStats(); }, 30000);
   setInterval(function() { document.getElementById('clock').textContent = new Date().toLocaleTimeString(); }, 1000);
+
+  // Load branch list
+  var branches = await listTagBranches();
+  var sel = document.getElementById('branch-select');
+  if (sel) sel.innerHTML = branches.map(function(b){ return '<option'+(b===CURRENT_BRANCH?' selected':'')+'>'+b+'</option>'; }).join('');
 })();
+
+async function onBranchSwitch(name) {
+  document.getElementById('state').textContent = '● Switching to '+name+'...';
+  switchBranch(name);
+  var count = await fetchTagDB();
+  renderTree(document.getElementById('west-dock'));
+  renderEastDock(document.getElementById('east-dock'));
+  var main = document.getElementById('main-panel');
+  if (count) showTagsForPath(Object.keys(TAG_DB.tags)[0]||'');
+  else main.innerHTML = '<div style="text-align:center;padding:40px;color:var(--t2)"><h2>No tags on branch: '+name+'</h2></div>';
+  document.getElementById('state').textContent = '● RUN ['+name+']';
+}
