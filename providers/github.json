@@ -1,0 +1,17 @@
+{
+  "provider": "github_issues",
+  "desc": "Tag values stored as GitHub Issues with gittag label",
+  "config": {
+    "owner": "teslasolar",
+    "repo": "GITTAG",
+    "label": "gittag",
+    "poll_ms": 30000,
+    "format": "json_codeblock"
+  },
+  "operations": {
+    "read": "GET /repos/{owner}/{repo}/issues?labels={label}",
+    "write": "POST /repos/{owner}/{repo}/issues",
+    "update": "PATCH /repos/{owner}/{repo}/issues/{number}",
+    "delete": "PATCH /repos/{owner}/{repo}/issues/{number} state=closed"
+  }
+}

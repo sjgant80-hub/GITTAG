@@ -1,0 +1,15 @@
+{
+  "_udt": "ISA95_Equipment",
+  "_schema": "gittag/namespace/v1",
+  "level": 4,
+  "fields": {
+    "name": { "type": "STRING", "desc": "Equipment tag name" },
+    "udt_type": { "type": "STRING", "desc": "GitPLC UDT type (motor, valve, pid, tank)" },
+    "udt_ref": { "type": "STRING", "desc": "Path to UDT definition in GitPLC" },
+    "io_card": { "type": "STRING", "desc": "IO card reference" },
+    "io_point": { "type": "INT", "desc": "IO point number" },
+    "opc_item": { "type": "STRING", "desc": "OPC-UA item path" }
+  },
+  "tag_path": "{enterprise}/{site}/{area}/{name}",
+  "children": null
+}

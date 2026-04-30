@@ -1,0 +1,17 @@
+{
+  "provider": "opcua",
+  "desc": "Sync tags to/from OPC-UA server",
+  "config": {
+    "endpoint": "opc.tcp://localhost:62541",
+    "namespace": "ns=2",
+    "security": "None",
+    "auth": "anonymous"
+  },
+  "mapping": {
+    "tag_path": "ns=2;s={enterprise}/{site}/{area}/{equipment}/{point}",
+    "data_type_map": {
+      "BOOL": "Boolean", "INT": "Int16", "DINT": "Int32",
+      "REAL": "Float", "LREAL": "Double", "STRING": "String"
+    }
+  }
+}

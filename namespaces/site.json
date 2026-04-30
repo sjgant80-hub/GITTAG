@@ -1,0 +1,13 @@
+{
+  "_udt": "ISA95_Site",
+  "_schema": "gittag/namespace/v1",
+  "level": 2,
+  "fields": {
+    "name": { "type": "STRING", "desc": "Site/plant name" },
+    "location": { "type": "STRING", "desc": "Physical location" },
+    "areas": { "type": "ARRAY OF AreaRef", "desc": "Child areas" },
+    "timezone": { "type": "STRING", "desc": "IANA timezone" }
+  },
+  "tag_path": "{enterprise}/{name}",
+  "children": "area"
+}

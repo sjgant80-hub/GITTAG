@@ -1,0 +1,19 @@
+{
+  "provider": "ignition",
+  "desc": "Sync tags to Ignition gateway tag provider",
+  "config": {
+    "gateway": "http://localhost:8090",
+    "provider": "default",
+    "project": "assway_demo"
+  },
+  "mapping": {
+    "tag_path": "[default]{area}/{equipment}/{point}",
+    "udt_path": "_types_/{udt_type}",
+    "history": { "enabled": true, "provider": "default_history" }
+  },
+  "sync": {
+    "direction": "bidirectional",
+    "conflict": "gateway_wins",
+    "interval_ms": 60000
+  }
+}

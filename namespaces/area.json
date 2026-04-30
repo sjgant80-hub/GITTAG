@@ -1,0 +1,13 @@
+{
+  "_udt": "ISA95_Area",
+  "_schema": "gittag/namespace/v1",
+  "level": 3,
+  "fields": {
+    "name": { "type": "STRING", "desc": "Process area name" },
+    "equipment": { "type": "ARRAY OF EquipmentRef", "desc": "Child equipment" },
+    "plc": { "type": "STRING", "desc": "Controlling PLC" },
+    "opc_path": { "type": "STRING", "desc": "OPC-UA base path" }
+  },
+  "tag_path": "{enterprise}/{site}/{name}",
+  "children": "equipment"
+}

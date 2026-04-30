@@ -1,0 +1,12 @@
+{
+  "_udt": "ISA95_Enterprise",
+  "_schema": "gittag/namespace/v1",
+  "level": 1,
+  "fields": {
+    "name": { "type": "STRING", "desc": "Enterprise name" },
+    "sites": { "type": "ARRAY OF SiteRef", "desc": "Child sites" },
+    "erp_id": { "type": "STRING", "desc": "ERP system reference" }
+  },
+  "tag_path": "{name}",
+  "children": "site"
+}
